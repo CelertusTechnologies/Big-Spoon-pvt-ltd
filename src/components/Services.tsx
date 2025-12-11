@@ -1,44 +1,44 @@
-import { Utensils, Coffee, Calendar, Truck } from "lucide-react";
-import lunchSpread from "@/assets/lunch-spread.jpg";
-import snacksPlatter from "@/assets/snacks-platter.jpg";
-import eventCatering from "@/assets/event-catering.jpg";
+import { Utensils, Coffee, Building2, Truck, Users, Calendar } from "lucide-react";
+import buffetSetup from "@/assets/buffet-setup.jpg";
+import foodVariety from "@/assets/food-variety.jpg";
+import kitchenPrep from "@/assets/kitchen-prep.jpg";
 
 const services = [
   {
+    icon: Building2,
+    title: "Cafeteria Management",
+    description: "Complete end-to-end management of your office cafeteria. We handle setup, staffing, and daily operations so you can focus on your business.",
+    image: buffetSetup,
+  },
+  {
     icon: Utensils,
-    title: "Daily Lunch Service",
-    description: "Nutritious and delicious lunch delivered fresh to your office every day. Customizable menus to suit your team's preferences.",
-    image: lunchSpread,
+    title: "Daily Meal Programs",
+    description: "Consistent, quality meals served fresh from our on-site kitchen. Rotating menus featuring North Indian, South Indian, and Continental options.",
+    image: foodVariety,
   },
   {
     icon: Coffee,
-    title: "Snacks & Refreshments",
-    description: "Keep your team energized with our selection of snacks, chai, coffee, and refreshments throughout the day.",
-    image: snacksPlatter,
-  },
-  {
-    icon: Calendar,
-    title: "Event Catering",
-    description: "Make your corporate events memorable with our professional catering services for meetings, conferences, and celebrations.",
-    image: eventCatering,
+    title: "Snack Counters & Pantry",
+    description: "Keep your workforce energized with dedicated snack counters, tea/coffee stations, and pantry management services.",
+    image: kitchenPrep,
   },
 ];
 
 const features = [
   {
-    icon: Truck,
-    title: "On-Time Delivery",
-    description: "We guarantee punctual delivery so your team never has to wait.",
+    icon: Users,
+    title: "Scalable Operations",
+    description: "From 50 to 5000+ employees, we scale seamlessly with your needs.",
   },
   {
-    icon: Utensils,
-    title: "Customizable Menus",
-    description: "Tailor menus to dietary requirements and preferences.",
+    icon: Truck,
+    title: "FSSAI Certified",
+    description: "Fully compliant with food safety standards and hygiene protocols.",
   },
   {
     icon: Calendar,
-    title: "Flexible Plans",
-    description: "Daily, weekly, or monthly plans to suit your needs.",
+    title: "Flexible Contracts",
+    description: "Monthly or annual contracts with transparent pricing.",
   },
 ];
 
@@ -50,10 +50,10 @@ const Services = () => {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-primary font-semibold text-sm uppercase tracking-wider">Our Services</span>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-3 mb-4">
-            Catering Solutions for Every Need
+            Corporate Food Services
           </h2>
           <p className="text-lg text-muted-foreground">
-            From daily office lunches to grand corporate events, we have the perfect catering solution for your business.
+            We partner with businesses to manage their entire food service operations—from cafeteria setup to daily meal preparation.
           </p>
         </div>
 

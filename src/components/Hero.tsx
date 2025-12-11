@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Users, Clock, Award } from "lucide-react";
-import heroCatering from "@/assets/hero-catering.jpg";
+import { ArrowRight, Users, Clock, Building2 } from "lucide-react";
+import officeCafeteria from "@/assets/office-cafeteria.jpg";
 
 const Hero = () => {
   return (
@@ -8,8 +8,8 @@ const Hero = () => {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
         <img
-          src={heroCatering}
-          alt="Corporate catering spread with fresh salads and sandwiches"
+          src={officeCafeteria}
+          alt="Corporate cafeteria buffet line with employees being served"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-secondary/95 via-secondary/80 to-secondary/40" />
@@ -20,21 +20,21 @@ const Hero = () => {
         <div className="max-w-2xl">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-primary/20 text-primary-foreground px-4 py-2 rounded-full mb-6 animate-fade-up">
-            <Award className="w-4 h-4" />
-            <span className="text-sm font-medium">Trusted by 100+ Companies in Gurugram</span>
+            <Building2 className="w-4 h-4" />
+            <span className="text-sm font-medium">Trusted Corporate Cafeteria Partner in Gurugram</span>
           </div>
 
           {/* Headline */}
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6 animate-fade-up" style={{ animationDelay: "0.1s" }}>
-            Delicious Meals,{" "}
-            <span className="text-primary">Delivered Fresh</span>{" "}
-            to Your Office
+            Your Complete{" "}
+            <span className="text-primary">Corporate Cafeteria</span>{" "}
+            Solution
           </h1>
 
           {/* Subheadline */}
           <p className="text-lg md:text-xl text-primary-foreground/80 mb-8 animate-fade-up" style={{ animationDelay: "0.2s" }}>
-            Big Spoon provides premium corporate catering services for lunch, snacks, 
-            and special events. Fuel your team with wholesome, delicious food.
+            Big Spoon manages end-to-end cafeteria operations for businesses. 
+            From daily meals to snack counters, we keep your workforce well-fed and productive.
           </p>
 
           {/* CTA Buttons */}
@@ -54,21 +54,21 @@ const Hero = () => {
           <div className="grid grid-cols-3 gap-6 animate-fade-up" style={{ animationDelay: "0.4s" }}>
             <div className="text-center md:text-left">
               <div className="flex items-center justify-center md:justify-start gap-2 mb-1">
-                <Users className="w-5 h-5 text-primary" />
+                <Building2 className="w-5 h-5 text-primary" />
                 <span className="font-display text-2xl md:text-3xl font-bold text-primary-foreground">100+</span>
               </div>
-              <p className="text-sm text-primary-foreground/60">Corporate Clients</p>
+              <p className="text-sm text-primary-foreground/60">Office Cafeterias</p>
+            </div>
+            <div className="text-center md:text-left">
+              <div className="flex items-center justify-center md:justify-start gap-2 mb-1">
+                <Users className="w-5 h-5 text-primary" />
+                <span className="font-display text-2xl md:text-3xl font-bold text-primary-foreground">5000+</span>
+              </div>
+              <p className="text-sm text-primary-foreground/60">Employees Served Daily</p>
             </div>
             <div className="text-center md:text-left">
               <div className="flex items-center justify-center md:justify-start gap-2 mb-1">
                 <Clock className="w-5 h-5 text-primary" />
-                <span className="font-display text-2xl md:text-3xl font-bold text-primary-foreground">5000+</span>
-              </div>
-              <p className="text-sm text-primary-foreground/60">Meals Daily</p>
-            </div>
-            <div className="text-center md:text-left">
-              <div className="flex items-center justify-center md:justify-start gap-2 mb-1">
-                <Award className="w-5 h-5 text-primary" />
                 <span className="font-display text-2xl md:text-3xl font-bold text-primary-foreground">10+</span>
               </div>
               <p className="text-sm text-primary-foreground/60">Years Experience</p>
