@@ -1,35 +1,35 @@
-import { CheckCircle, Heart, Leaf, Shield, Star, Users } from "lucide-react";
+import { Building2, Clock, Leaf, Shield, Users, Wallet } from "lucide-react";
 
 const reasons = [
   {
-    icon: Leaf,
-    title: "Fresh Ingredients",
-    description: "We source the freshest ingredients daily from trusted local suppliers.",
-  },
-  {
-    icon: Heart,
-    title: "Made with Love",
-    description: "Our chefs prepare every meal with passion and attention to detail.",
-  },
-  {
-    icon: Shield,
-    title: "Hygiene First",
-    description: "FSSAI certified kitchen with strict hygiene and safety protocols.",
-  },
-  {
-    icon: Star,
-    title: "Quality Assured",
-    description: "Consistent quality across all orders, big or small.",
+    icon: Building2,
+    title: "Turnkey Cafeteria Setup",
+    description: "From equipment installation to staffing, we handle your entire cafeteria setup.",
   },
   {
     icon: Users,
-    title: "Dedicated Team",
-    description: "A professional team committed to your satisfaction.",
+    title: "Trained Service Staff",
+    description: "Professional kitchen and service staff deployed at your premises.",
   },
   {
-    icon: CheckCircle,
-    title: "Affordable Pricing",
-    description: "Premium quality food at competitive corporate rates.",
+    icon: Shield,
+    title: "FSSAI Certified",
+    description: "Fully compliant with food safety regulations and hygiene standards.",
+  },
+  {
+    icon: Clock,
+    title: "Reliable Operations",
+    description: "Consistent, punctual service every single day without fail.",
+  },
+  {
+    icon: Leaf,
+    title: "Quality Sourcing",
+    description: "Fresh ingredients sourced daily from trusted suppliers.",
+  },
+  {
+    icon: Wallet,
+    title: "Cost-Effective",
+    description: "Transparent pricing models that fit your company's budget.",
   },
 ];
 
@@ -45,10 +45,10 @@ const WhyChooseUs = () => {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-primary font-semibold text-sm uppercase tracking-wider">Why Big Spoon</span>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mt-3 mb-4">
-            What Makes Us Different
+            Your Trusted Cafeteria Partner
           </h2>
           <p className="text-lg text-secondary-foreground/70">
-            We're not just caterers — we're your partner in keeping your team happy, healthy, and productive.
+            We take the hassle out of corporate food services so you can focus on running your business.
           </p>
         </div>
 
@@ -74,19 +74,19 @@ const WhyChooseUs = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="font-display text-4xl md:text-5xl font-bold text-primary mb-2">10+</div>
-              <p className="text-secondary-foreground/70">Years in Business</p>
+              <p className="text-secondary-foreground/70">Years in Operations</p>
             </div>
             <div className="text-center">
               <div className="font-display text-4xl md:text-5xl font-bold text-primary mb-2">100+</div>
-              <p className="text-secondary-foreground/70">Corporate Clients</p>
+              <p className="text-secondary-foreground/70">Office Cafeterias</p>
             </div>
             <div className="text-center">
               <div className="font-display text-4xl md:text-5xl font-bold text-primary mb-2">5000+</div>
-              <p className="text-secondary-foreground/70">Daily Meals</p>
+              <p className="text-secondary-foreground/70">Employees Fed Daily</p>
             </div>
             <div className="text-center">
               <div className="font-display text-4xl md:text-5xl font-bold text-primary mb-2">98%</div>
-              <p className="text-secondary-foreground/70">Satisfaction Rate</p>
+              <p className="text-secondary-foreground/70">Client Retention</p>
             </div>
           </div>
         </div>

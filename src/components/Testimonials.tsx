@@ -3,20 +3,20 @@ import { Star, Quote } from "lucide-react";
 const testimonials = [
   {
     name: "Rajesh Kumar",
-    role: "HR Manager, Tech Solutions Pvt Ltd",
-    content: "Big Spoon has transformed our office lunch experience. The food is always fresh, tasty, and delivered on time. Our employees love it!",
+    role: "Facilities Head, IT Services Company",
+    content: "Big Spoon has been managing our cafeteria for 4 years. Their team is professional, the food quality is consistent, and they handle everything from procurement to cleanup.",
     rating: 5,
   },
   {
     name: "Priya Sharma",
-    role: "Admin Head, Finance Corp",
-    content: "We've been using Big Spoon for 3 years now. Their consistency in quality and service is remarkable. Highly recommended for corporate catering.",
+    role: "Admin Director, Manufacturing Unit",
+    content: "We needed a reliable partner to feed 800+ workers daily. Big Spoon set up the entire operation and now runs it seamlessly. Zero complaints from our employees.",
     rating: 5,
   },
   {
     name: "Amit Verma",
-    role: "Office Manager, StartUp Hub",
-    content: "The variety in their menu keeps our team excited about lunch every day. Their snacks and chai service is a bonus that everyone appreciates.",
+    role: "HR Manager, Co-working Space",
+    content: "The variety in their daily menu and the quality of their snack counter service keeps our members happy. They've become an integral part of our amenities.",
     rating: 5,
   },
 ];
@@ -29,10 +29,10 @@ const Testimonials = () => {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-primary font-semibold text-sm uppercase tracking-wider">Testimonials</span>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-3 mb-4">
-            What Our Clients Say
+            Trusted by Leading Businesses
           </h2>
           <p className="text-lg text-muted-foreground">
-            Don't just take our word for it — hear from the companies we serve every day.
+            Hear from the facilities managers and HR teams who rely on us every day.
           </p>
         </div>
 
