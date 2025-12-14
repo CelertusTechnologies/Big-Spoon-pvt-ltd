@@ -6,6 +6,7 @@ import MenuPreview from "@/components/MenuPreview";
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import FloatingActions from "@/components/FloatingActions";
 
 const Index = () => {
   return (
@@ -18,6 +19,7 @@ const Index = () => {
       <Testimonials />
       <Contact />
       <Footer />
+      <FloatingActions />
     </main>
   );
 };

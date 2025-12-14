@@ -11,6 +11,7 @@ const Contact = () => {
     email: "",
     company: "",
     employees: "",
+    phone: "",
     message: "",
   });
 
@@ -20,11 +21,11 @@ const Contact = () => {
       title: "Inquiry Sent!",
       description: "We'll get back to you within 24 hours.",
     });
-    setFormData({ name: "", email: "", company: "", employees: "", message: "" });
+    setFormData({ name: "", email: "", company: "", employees: "", phone: "", message: "" });
   };
 
   return (
-    <section id="contact" className="py-20 md:py-32 bg-background">
+    <section id="contact" className="py-20 md:py-32 bg-background animate-section">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
           {/* Left Column - Contact Info */}
@@ -70,7 +71,14 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground mb-1">Phone</h4>
-                  <p className="text-muted-foreground">Call us for inquiries</p>
+                  <div className="flex flex-col text-muted-foreground">
+                    <a href="tel:+919717440336" className="hover:text-primary transition-colors">
+                      +91 97174 40336
+                    </a>
+                    <a href="tel:+919304892315" className="hover:text-primary transition-colors">
+                      +91 93048 92315
+                    </a>
+                  </div>
                 </div>
               </div>
 
@@ -147,6 +155,19 @@ const Contact = () => {
                     placeholder="e.g., 50-100"
                   />
                 </div>
+              </div>
+
+              <div>
+                <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
+                  Phone Number *
+                </label>
+                <Input
+                  id="phone"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  placeholder="+91 97174 40336"
+                  required
+                />
               </div>
 
               <div>

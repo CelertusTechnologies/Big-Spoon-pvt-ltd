@@ -35,7 +35,8 @@ const reasons = [
 
 const WhyChooseUs = () => {
   return (
-    <section id="about" className="py-20 md:py-32 bg-secondary text-secondary-foreground relative overflow-hidden">
+    <section id="about" className="py-20 md:py-32 bg-secondary text-secondary-foreground relative overflow-hidden animate-section">
+      <div id="mission" className="absolute -top-20" aria-hidden="true" />
       {/* Decorative Elements */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />

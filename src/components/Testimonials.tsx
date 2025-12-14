@@ -23,7 +23,7 @@ const testimonials = [
 
 const Testimonials = () => {
   return (
-    <section id="testimonials" className="py-20 md:py-32 bg-muted/30">
+    <section id="testimonials" className="py-20 md:py-32 bg-muted/30 animate-section">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">

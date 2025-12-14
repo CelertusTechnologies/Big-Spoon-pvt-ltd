@@ -6,23 +6,23 @@
 
 @layer base {
   :root {
-    --background: 40 33% 98%;
-    --foreground: 220 20% 15%;
+    --background: 220 20% 7%;
+    --foreground: 40 18% 96%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 220 20% 15%;
+    --card: 220 18% 12%;
+    --card-foreground: 40 18% 96%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 15%;
+    --popover: 220 18% 12%;
+    --popover-foreground: 40 18% 96%;
 
     --primary: 28 85% 55%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 15% 20%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 220 16% 14%;
+    --secondary-foreground: 40 18% 96%;
 
-    --muted: 40 20% 92%;
-    --muted-foreground: 220 10% 45%;
+    --muted: 220 12% 16%;
+    --muted-foreground: 40 12% 70%;
 
     --accent: 145 40% 45%;
     --accent-foreground: 0 0% 100%;
@@ -30,18 +30,18 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 40 15% 88%;
-    --input: 40 15% 88%;
+    --border: 220 14% 22%;
+    --input: 220 14% 22%;
     --ring: 28 85% 55%;
 
     --radius: 0.75rem;
 
     /* Custom tokens */
-    --gradient-hero: linear-gradient(135deg, hsl(28 85% 55% / 0.1), hsl(40 33% 98%));
-    --gradient-warm: linear-gradient(180deg, hsl(40 40% 96%), hsl(40 33% 98%));
-    --shadow-soft: 0 4px 20px -4px hsl(220 20% 15% / 0.08);
-    --shadow-elevated: 0 12px 40px -8px hsl(220 20% 15% / 0.12);
-    --shadow-glow: 0 0 40px hsl(28 85% 55% / 0.2);
+    --gradient-hero: linear-gradient(135deg, hsl(220 20% 7% / 0.6), hsl(220 16% 14% / 0.4));
+    --gradient-warm: linear-gradient(180deg, hsl(220 16% 12%), hsl(220 20% 7%));
+    --shadow-soft: 0 4px 20px -4px hsl(220 20% 5% / 0.4);
+    --shadow-elevated: 0 12px 40px -8px hsl(220 20% 5% / 0.55);
+    --shadow-glow: 0 0 40px hsl(28 85% 55% / 0.25);
   }
 
   .dark {
@@ -114,6 +114,22 @@
     animation: scaleIn 0.5s ease-out forwards;
   }
 
+  .animate-rise {
+    animation: rise 1s ease-out forwards;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2.8s ease-in-out infinite;
+  }
+
+  .animate-section {
+    animation: fadeUp 0.9s ease-out forwards;
+  }
+
   .hover-lift {
     @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated;
   }
@@ -147,5 +163,40 @@
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 0px hsl(28 85% 55% / 0.0);
+  }
+  50% {
+    box-shadow: 0 0 24px hsl(28 85% 55% / 0.35);
+  }
+  100% {
+    box-shadow: 0 0 0px hsl(28 85% 55% / 0.0);
   }
 }

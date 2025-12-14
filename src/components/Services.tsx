@@ -1,50 +1,77 @@
-import { Utensils, Coffee, Building2, Truck, Users, Calendar } from "lucide-react";
+import {
+  Utensils,
+  Coffee,
+  Building2,
+  Truck,
+  Users,
+  Calendar,
+  PartyPopper,
+  GraduationCap,
+} from "lucide-react";
 import buffetSetup from "@/assets/buffet-setup.jpg";
 import foodVariety from "@/assets/food-variety.jpg";
 import kitchenPrep from "@/assets/kitchen-prep.jpg";
+import eventCatering from "@/assets/event-catering.jpg";
 
 const services = [
   {
     icon: Building2,
     title: "Cafeteria Management",
-    description: "Complete end-to-end management of your office cafeteria. We handle setup, staffing, and daily operations so you can focus on your business.",
+    description:
+      "Complete end-to-end management of your office cafeteria with staffing, hygiene, inventory, and billing handled for you.",
     image: buffetSetup,
   },
   {
     icon: Utensils,
-    title: "Daily Meal Programs",
-    description: "Consistent, quality meals served fresh from our on-site kitchen. Rotating menus featuring North Indian, South Indian, and Continental options.",
+    title: "Daily Meals: Breakfast, Lunch & Dinner",
+    description:
+      "Fresh rotating menus across North Indian, South Indian, and Continental cuisines for everyday breakfast, lunch, snacks, and dinner.",
     image: foodVariety,
   },
   {
     icon: Coffee,
-    title: "Snack Counters & Pantry",
-    description: "Keep your workforce energized with dedicated snack counters, tea/coffee stations, and pantry management services.",
+    title: "Snacks & Pantry Programs",
+    description:
+      "Tea/coffee counters, healthy snacks, and evening refreshment bars that keep teams energized through the day.",
     image: kitchenPrep,
+  },
+  {
+    icon: PartyPopper,
+    title: "Festivals & Corporate Events",
+    description:
+      "Theme menus and live counters for Holi, Diwali, Christmas, New Year, offsites, and townhalls.",
+    image: eventCatering,
+  },
+  {
+    icon: GraduationCap,
+    title: "College & Tech Events",
+    description:
+      "End-to-end catering for college fests, GDSC meetups, hackathons, coding events, and campus drives.",
+    image: buffetSetup,
   },
 ];
 
 const features = [
   {
     icon: Users,
-    title: "Scalable Operations",
-    description: "From 50 to 5000+ employees, we scale seamlessly with your needs.",
+    title: "Daily Coverage",
+    description: "All-day coverage: breakfast, lunch, snacks, dinner plus late nights on request.",
   },
   {
     icon: Truck,
-    title: "FSSAI Certified",
-    description: "Fully compliant with food safety standards and hygiene protocols.",
+    title: "Compliant & Reliable",
+    description: "FSSAI certified operations with rigorous hygiene, audits, and backups.",
   },
   {
     icon: Calendar,
     title: "Flexible Contracts",
-    description: "Monthly or annual contracts with transparent pricing.",
+    description: "Monthly or annual contracts, per-plate pricing for events, and transparent SLAs.",
   },
 ];
 
 const Services = () => {
   return (
-    <section id="services" className="py-20 md:py-32 bg-muted/30">
+    <section id="services" className="py-20 md:py-32 bg-muted/30 animate-section">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -53,12 +80,12 @@ const Services = () => {
             Corporate Food Services
           </h2>
           <p className="text-lg text-muted-foreground">
-            We partner with businesses to manage their entire food service operations—from cafeteria setup to daily meal preparation.
+            We partner with businesses to manage their entire food service operations—from cafeteria setup to daily meals, festive celebrations, and campus events.
           </p>
         </div>
 
         {/* Service Cards */}
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-16">
           {services.map((service, index) => (
             <div
               key={service.title}

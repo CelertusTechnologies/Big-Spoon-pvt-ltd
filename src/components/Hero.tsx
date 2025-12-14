@@ -1,15 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Users, Clock, Building2 } from "lucide-react";
-import officeCafeteria from "@/assets/office-cafeteria.jpg";
+import buffetSetup from "@/assets/buffet-setup.jpg";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen pt-20 overflow-hidden">
+    <section className="relative min-h-screen pt-20 overflow-hidden animate-section">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
         <img
-          src={officeCafeteria}
-          alt="Corporate cafeteria buffet line with employees being served"
+          src={buffetSetup}
+          alt="Corporate buffet line with employees serving themselves fresh food"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-secondary/95 via-secondary/80 to-secondary/40" />
@@ -33,7 +33,7 @@ const Hero = () => {
 
           {/* Subheadline */}
           <p className="text-lg md:text-xl text-primary-foreground/80 mb-8 animate-fade-up" style={{ animationDelay: "0.2s" }}>
-            Big Spoon manages end-to-end cafeteria operations for businesses. 
+            Big Spoon manages end-to-end cafeteria operations for businesses.
             From daily meals to snack counters, we keep your workforce well-fed and productive.
           </p>
 

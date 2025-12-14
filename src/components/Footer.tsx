@@ -5,13 +5,12 @@ const Footer = () => {
 
   return (
     <footer className="bg-secondary text-secondary-foreground">
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
           {/* Brand */}
           <div className="lg:col-span-2">
             <a href="#" className="flex items-center gap-2 mb-4">
-              <span className="text-3xl">🥄</span>
-              <span className="font-display text-2xl font-bold">Big Spoon</span>
+              <span className="font-display text-2xl font-bold">Big Spoon India Pvt Ltd</span>
             </a>
             <p className="text-secondary-foreground/70 mb-6 max-w-md">
               Premium corporate catering services in Gurugram. Serving fresh, delicious meals 
@@ -48,38 +47,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-display text-lg font-bold mb-4">Quick Links</h4>
-            <ul className="space-y-3">
-              <li>
-                <a href="#services" className="text-secondary-foreground/70 hover:text-primary transition-colors">
-                  Our Services
-                </a>
-              </li>
-              <li>
-                <a href="#menu" className="text-secondary-foreground/70 hover:text-primary transition-colors">
-                  Menu
-                </a>
-              </li>
-              <li>
-                <a href="#about" className="text-secondary-foreground/70 hover:text-primary transition-colors">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="#testimonials" className="text-secondary-foreground/70 hover:text-primary transition-colors">
-                  Testimonials
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="text-secondary-foreground/70 hover:text-primary transition-colors">
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </div>
-
           {/* Contact Info */}
           <div>
             <h4 className="font-display text-lg font-bold mb-4">Contact Info</h4>
@@ -98,19 +65,24 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-primary flex-shrink-0" />
-                <span className="text-secondary-foreground/70 text-sm">
-                  Contact for inquiries
-                </span>
+                <div className="flex flex-col text-secondary-foreground/70 text-sm">
+                  <a href="tel:+919717440336" className="hover:text-primary transition-colors">
+                    +91 97174 40336
+                  </a>
+                  <a href="tel:+919304892315" className="hover:text-primary transition-colors">
+                    +91 93048 92315
+                  </a>
+                </div>
               </li>
             </ul>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-secondary-foreground/10">
+        <div className="mt-10 pt-6 border-t border-secondary-foreground/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-secondary-foreground/50 text-sm">
-              © {currentYear} Big Spoon. All rights reserved.
+              © {currentYear} Big Spoon India Pvt Ltd. All rights reserved.
             </p>
             <p className="text-secondary-foreground/50 text-sm">
               FSSAI Licensed | Serving Gurugram & NCR
