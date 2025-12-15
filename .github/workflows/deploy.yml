@@ -1,4 +1,4 @@
-name: Deploy Frontend to VPS
+name: Deploy React Dist to VPS
 
 on:
   push:
@@ -11,42 +11,25 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: 18
 
-      - name: Install dependencies
-        run: npm install
+      - name: Install & Build
+        run: |
+          npm install
+          npm run build
 
-      - name: Build React app
-        run: npm run build
-
-      - name: ⚡️ Clean remote dist folder
-        uses: appleboy/ssh-action@v0.1.10
-        with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            rm -rf /var/www/big-spoon/dist
-
-      - name: 🚀 Deploy dist folder to VPS
+      - name: Deploy dist to VPS
         uses: appleboy/scp-action@v0.1.7
         with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "dist"
-          target: "/var/www/big-spoon
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          source: "dist/*"
+          target: "/var/www/Big-Spoon-pvt-ltd"
+          strip_components: 1
 
-      - name: Reload Nginx
-        uses: appleboy/ssh-action@v0.1.10
-        with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            sudo systemctl reload nginx
