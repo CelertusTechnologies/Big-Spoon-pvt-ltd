@@ -10,7 +10,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="lg:col-span-2">
             <a href="#" className="flex items-center gap-2 mb-4">
-              <span className="font-display text-2xl font-bold">Big Spoon India Pvt Ltd</span>
+              <span className="font-display text-2xl font-bold">Bigg Spoon India Pvt Ltd</span>
             </a>
             <p className="text-secondary-foreground/70 mb-6 max-w-md">
               Premium corporate catering services in Gurugram. Serving fresh, delicious meals 
@@ -59,8 +59,8 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-primary flex-shrink-0" />
-                <a href="mailto:bigspoon.india@gmail.com" className="text-secondary-foreground/70 text-sm hover:text-primary transition-colors">
-                  bigspoon.india@gmail.com
+                <a href="mailto:biggspoon.india@gmail.com" className="text-secondary-foreground/70 text-sm hover:text-primary transition-colors">
+                  biggspoon.india@gmail.com
                 </a>
               </li>
               <li className="flex items-center gap-3">
@@ -82,7 +82,7 @@ const Footer = () => {
         <div className="mt-10 pt-6 border-t border-secondary-foreground/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-secondary-foreground/50 text-sm">
-              © {currentYear} Big Spoon India Pvt Ltd. All rights reserved.
+              © {currentYear} Bigg Spoon India Pvt Ltd. All rights reserved.
             </p>
             <p className="text-secondary-foreground/50 text-sm">
               FSSAI Licensed | Serving Gurugram & NCR

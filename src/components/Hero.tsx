@@ -9,14 +9,14 @@ const Hero = () => {
       <div className="absolute inset-0">
         <img
           src={buffetSetup}
-          alt="Corporate buffet line with employees serving themselves fresh food"
+          alt="Overhead view of corporate buffet counter with Indian dishes"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-secondary/95 via-secondary/80 to-secondary/40" />
       </div>
 
       {/* Content */}
-      <div className="relative container mx-auto px-4 py-20 md:py-32">
+      <div className="relative container mx-auto px-4 py-12 md:py-20">
         <div className="max-w-2xl">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-primary/20 text-primary-foreground px-4 py-2 rounded-full mb-6 animate-fade-up">
@@ -33,7 +33,7 @@ const Hero = () => {
 
           {/* Subheadline */}
           <p className="text-lg md:text-xl text-primary-foreground/80 mb-8 animate-fade-up" style={{ animationDelay: "0.2s" }}>
-            Big Spoon manages end-to-end cafeteria operations for businesses.
+            Bigg Spoon manages end-to-end cafeteria operations for businesses.
             From daily meals to snack counters, we keep your workforce well-fed and productive.
           </p>
 

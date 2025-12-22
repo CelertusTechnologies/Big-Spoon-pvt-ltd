@@ -4,13 +4,13 @@ const testimonials = [
   {
     name: "Rajesh Kumar",
     role: "Facilities Head, IT Services Company",
-    content: "Big Spoon has been managing our cafeteria for 4 years. Their team is professional, the food quality is consistent, and they handle everything from procurement to cleanup.",
+    content: "Bigg Spoon has been managing our cafeteria for 4 years. Their team is professional, the food quality is consistent, and they handle everything from procurement to cleanup.",
     rating: 5,
   },
   {
     name: "Priya Sharma",
     role: "Admin Director, Manufacturing Unit",
-    content: "We needed a reliable partner to feed 800+ workers daily. Big Spoon set up the entire operation and now runs it seamlessly. Zero complaints from our employees.",
+    content: "We needed a reliable partner to feed 800+ workers daily. Bigg Spoon set up the entire operation and now runs it seamlessly. Zero complaints from our employees.",
     rating: 5,
   },
   {

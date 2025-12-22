@@ -16,7 +16,7 @@ const FloatingActions = () => {
       <a
         href="tel:+919717440336"
         className="flex items-center gap-3 px-4 py-3 rounded-full bg-primary text-primary-foreground shadow-elevated hover:shadow-glow transition-all duration-300 hover:-translate-y-0.5"
-        aria-label="Call Big Spoon"
+        aria-label="Call Bigg Spoon"
       >
         <Phone className="w-5 h-5" />
         <span className="font-semibold hidden sm:inline">Call Us</span>

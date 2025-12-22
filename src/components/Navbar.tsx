@@ -1,6 +1,81 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
+// Logo component - shows logo image from public folder
+const LogoComponent = () => {
+  const [imgError, setImgError] = useState(false);
+  const [currentSrcIndex, setCurrentSrcIndex] = useState(0);
+  const [imgLoaded, setImgLoaded] = useState(false);
+
+  // All possible logo file names to try - check these files in public folder
+  const sources = [
+    "/logo.png",
+    "/logo.svg", 
+    "/BS-logo.png",
+    "/BS-logo.svg",
+    "/bigg-spoon-logo.png",
+    "/bigg-spoon-logo.svg",
+    "/logo.jpg",
+    "/logo.jpeg",
+  ];
+
+  const handleError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    const target = e.target as HTMLImageElement;
+    console.log(`Logo load failed: ${target.src}, trying next...`);
+    
+    if (currentSrcIndex < sources.length - 1) {
+      // Try next source
+      setCurrentSrcIndex(currentSrcIndex + 1);
+      setImgLoaded(false);
+    } else {
+      // All sources failed, show text
+      console.log("All logo sources failed, showing text fallback");
+      setImgError(true);
+    }
+  };
+
+  const handleLoad = () => {
+    console.log(`Logo loaded successfully: ${sources[currentSrcIndex]}`);
+    setImgLoaded(true);
+    setImgError(false);
+  };
+
+  // Show text fallback only if all images fail
+  if (imgError) {
+    return (
+      <span className="font-display text-xl md:text-2xl font-bold text-primary-foreground whitespace-nowrap drop-shadow-lg">
+        Bigg Spoon
+      </span>
+    );
+  }
+
+  // Show logo image
+  return (
+    <div className="relative flex items-center justify-center">
+      <img 
+        src={sources[currentSrcIndex]} 
+        alt="Bigg Spoon Logo" 
+        className={`h-12 md:h-14 w-auto object-contain max-w-[150px] min-h-[48px] transition-opacity duration-200 ${imgLoaded ? 'opacity-100' : 'opacity-0'}`}
+        onError={handleError}
+        onLoad={handleLoad}
+        style={{ 
+          imageRendering: 'auto', 
+          display: 'block',
+          filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.2))',
+          visibility: 'visible',
+          maxWidth: '150px',
+          height: 'auto'
+        }}
+      />
+      {!imgLoaded && !imgError && (
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="w-6 h-6 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin"></div>
+        </div>
+      )}
+    </div>
+  );
+};
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -19,16 +94,16 @@ const Navbar = () => {
           {/* Mobile Logo */}
           <a
             href="#"
-            className="md:hidden font-display text-2xl font-bold text-primary-foreground"
+            className="md:hidden flex items-center min-w-[120px]"
           >
-            Big Spoon
+            <LogoComponent />
           </a>
 
           {/* Desktop Navigation Pill */}
           <div className="hidden md:flex items-center gap-8 px-10 py-2.5 rounded-full shadow-elevated bg-secondary/90 text-secondary-foreground border border-white/10 mx-auto animate-fade-in">
-            <span className="font-display text-xl font-bold text-primary-foreground">
-              Big Spoon
-            </span>
+            <a href="#" className="flex items-center min-w-[120px] justify-center">
+              <LogoComponent />
+            </a>
             <div className="w-px h-6 bg-secondary-foreground/20" />
             <div className="flex items-center gap-6">
               {navLinks.map((link) => (

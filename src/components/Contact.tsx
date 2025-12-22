@@ -17,11 +17,31 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Create email body with form data
+    const subject = encodeURIComponent(`Quote Request from ${formData.name} - ${formData.company}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\n` +
+      `Email: ${formData.email}\n` +
+      `Company: ${formData.company}\n` +
+      `Number of Employees: ${formData.employees || 'Not specified'}\n` +
+      `Phone: ${formData.phone}\n\n` +
+      `Requirements:\n${formData.message || 'No specific requirements mentioned.'}`
+    );
+    
+    // Open email client with pre-filled information
+    const mailtoLink = `mailto:biggspoon.india@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = mailtoLink;
+    
     toast({
-      title: "Inquiry Sent!",
-      description: "We'll get back to you within 24 hours.",
+      title: "Opening Email Client",
+      description: "Your email client will open with the inquiry details.",
     });
-    setFormData({ name: "", email: "", company: "", employees: "", phone: "", message: "" });
+    
+    // Reset form after a short delay
+    setTimeout(() => {
+      setFormData({ name: "", email: "", company: "", employees: "", phone: "", message: "" });
+    }, 1000);
   };
 
   return (
@@ -59,8 +79,8 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground mb-1">Email</h4>
-                  <a href="mailto:bigspoon.india@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
-                    bigspoon.india@gmail.com
+                  <a href="mailto:biggspoon.india@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+                    biggspoon.india@gmail.com
                   </a>
                 </div>
               </div>
