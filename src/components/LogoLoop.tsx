@@ -1,0 +1,262 @@
+import { ReactNode, useState, useEffect, useRef } from 'react';
+
+interface Logo {
+  node?: ReactNode;
+  src?: string;
+  alt?: string;
+  title?: string;
+  href?: string;
+}
+
+interface LogoLoopProps {
+  logos: Logo[];
+  speed?: number; // pixels per second
+  direction?: 'left' | 'right' | 'up' | 'down';
+  logoHeight?: number;
+  gap?: number;
+  hoverSpeed?: number; // speed when hovering (0 = pause)
+  scaleOnHover?: boolean;
+  fadeOut?: boolean;
+  fadeOutColor?: string;
+  ariaLabel?: string;
+}
+
+const LogoLoop = ({
+  logos,
+  speed = 100,
+  direction = 'left',
+  logoHeight = 48,
+  gap = 40,
+  hoverSpeed,
+  scaleOnHover = false,
+  fadeOut = false,
+  fadeOutColor = '#ffffff',
+  ariaLabel = 'Logo carousel',
+}: LogoLoopProps) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const measureRef = useRef<HTMLDivElement>(null);
+  const [animationSpeed, setAnimationSpeed] = useState(speed);
+  const [contentSize, setContentSize] = useState(0);
+
+  useEffect(() => {
+    if (isHovered && hoverSpeed !== undefined) {
+      setAnimationSpeed(hoverSpeed);
+    } else {
+      setAnimationSpeed(speed);
+    }
+  }, [isHovered, hoverSpeed, speed]);
+
+  // Measure the actual content size for seamless animation
+  useEffect(() => {
+    const measureContent = () => {
+      if (measureRef.current) {
+        const isHorizontal = direction === 'left' || direction === 'right';
+        const size = isHorizontal
+          ? measureRef.current.offsetWidth
+          : measureRef.current.offsetHeight;
+        if (size > 0) {
+          setContentSize(size);
+        }
+      }
+    };
+
+    // Measure after content is rendered
+    const timeout = setTimeout(measureContent, 100);
+    const observer = new ResizeObserver(measureContent);
+
+    if (measureRef.current) {
+      observer.observe(measureRef.current);
+    }
+
+    // Also measure on window resize
+    window.addEventListener('resize', measureContent);
+
+    return () => {
+      clearTimeout(timeout);
+      observer.disconnect();
+      window.removeEventListener('resize', measureContent);
+    };
+  }, [logos, direction, logoHeight, gap]);
+
+  const isHorizontal = direction === 'left' || direction === 'right';
+  const isVertical = direction === 'up' || direction === 'down';
+
+  // Duplicate logos 2 times for seamless infinite loop
+  // We'll animate by exactly one set's width, so when it loops, it shows the duplicate
+  const duplicatedLogos = [...logos, ...logos];
+
+  const containerStyle: React.CSSProperties = {
+    position: 'relative',
+    width: '100%',
+    height: isHorizontal ? `${logoHeight}px` : 'auto',
+    overflow: 'hidden',
+    maskImage: fadeOut
+      ? isHorizontal
+        ? `linear-gradient(to ${direction === 'left' ? 'right' : 'left'}, transparent, ${fadeOutColor} 10%, ${fadeOutColor} 90%, transparent)`
+        : `linear-gradient(to ${direction === 'up' ? 'bottom' : 'top'}, transparent, ${fadeOutColor} 10%, ${fadeOutColor} 90%, transparent)`
+      : undefined,
+    WebkitMaskImage: fadeOut
+      ? isHorizontal
+        ? `linear-gradient(to ${direction === 'left' ? 'right' : 'left'}, transparent, ${fadeOutColor} 10%, ${fadeOutColor} 90%, transparent)`
+        : `linear-gradient(to ${direction === 'up' ? 'bottom' : 'top'}, transparent, ${fadeOutColor} 10%, ${fadeOutColor} 90%, transparent)`
+      : undefined,
+  };
+
+  // Calculate animation duration based on actual content size
+  const animationDuration = contentSize > 0
+    ? contentSize / animationSpeed
+    : 20; // fallback duration
+
+  const trackStyle: React.CSSProperties = {
+    display: 'flex',
+    flexDirection: isHorizontal ? 'row' : 'column',
+    gap: `${gap}px`,
+    width: isHorizontal ? 'fit-content' : '100%',
+    height: isVertical ? 'fit-content' : '100%',
+    animation: `scroll-${direction} ${animationDuration}s linear infinite`,
+  };
+
+  const logoStyle: React.CSSProperties = {
+    height: isHorizontal ? `${logoHeight}px` : 'auto',
+    width: isHorizontal ? 'auto' : `${logoHeight}px`,
+    flexShrink: 0,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    transition: scaleOnHover ? 'transform 0.3s ease' : undefined,
+  };
+
+  const getKeyframes = () => {
+    // Animate by exactly one set of logos (50% of total content)
+    // This ensures seamless looping - when animation completes, 
+    // it resets to show the duplicate set which looks identical
+    const translateValue = isHorizontal
+      ? `translateX(${direction === 'left' ? '-' : ''}${contentSize || 1000}px)`
+      : `translateY(${direction === 'up' ? '-' : ''}${contentSize || 1000}px)`;
+
+    return `
+      @keyframes scroll-${direction} {
+        0% {
+          transform: translate${isHorizontal ? 'X' : 'Y'}(0);
+        }
+        100% {
+          transform: ${translateValue};
+        }
+      }
+    `;
+  };
+
+  // Render a single logo
+  const renderLogo = (logo: Logo, logoIndex: number, uniqueKey: string) => {
+    const content = logo.node ? (
+      logo.node
+    ) : logo.src ? (
+      <img
+        src={logo.src}
+        alt={logo.alt || logo.title || `Logo ${logoIndex + 1}`}
+        style={{
+          height: '100%',
+          width: 'auto',
+          objectFit: 'contain',
+          opacity: 0.8,
+          transition: 'opacity 0.3s ease, transform 0.3s ease',
+        }}
+        onMouseEnter={(e) => {
+          if (scaleOnHover) {
+            e.currentTarget.style.transform = 'scale(1.1)';
+          }
+          e.currentTarget.style.opacity = '1';
+        }}
+        onMouseLeave={(e) => {
+          if (scaleOnHover) {
+            e.currentTarget.style.transform = 'scale(1)';
+          }
+          e.currentTarget.style.opacity = '0.8';
+        }}
+      />
+    ) : null;
+
+    return (
+      <div
+        key={uniqueKey}
+        style={logoStyle}
+        className={scaleOnHover ? 'hover:scale-110' : ''}
+      >
+        {logo.href ? (
+          <a
+            href={logo.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%' }}
+          >
+            {content}
+          </a>
+        ) : (
+          content
+        )}
+      </div>
+    );
+  };
+
+  return (
+    <>
+      <style>{getKeyframes()}</style>
+      {/* Hidden measurement container - renders first set to measure width */}
+      <div
+        ref={measureRef}
+        style={{
+          position: 'absolute',
+          visibility: 'hidden',
+          height: isHorizontal ? `${logoHeight}px` : 'auto',
+          width: isHorizontal ? 'auto' : `${logoHeight}px`,
+          display: 'flex',
+          flexDirection: isHorizontal ? 'row' : 'column',
+          gap: `${gap}px`,
+          pointerEvents: 'none',
+        }}
+      >
+        {logos.map((logo, idx) => {
+          const content = logo.node ? (
+            logo.node
+          ) : logo.src ? (
+            <img
+              src={logo.src}
+              alt={logo.alt || logo.title || `Logo ${idx + 1}`}
+              style={{
+                height: '100%',
+                width: 'auto',
+                objectFit: 'contain',
+              }}
+            />
+          ) : null;
+          return (
+            <div key={`measure-${idx}`} style={logoStyle}>
+              {content}
+            </div>
+          );
+        })}
+      </div>
+
+      <div
+        ref={containerRef}
+        style={containerStyle}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        aria-label={ariaLabel}
+      >
+        <div ref={trackRef} style={trackStyle}>
+          {duplicatedLogos.map((logo, index) => {
+            const setIndex = Math.floor(index / logos.length);
+            const logoIndex = index % logos.length;
+            const uniqueKey = `${logo.title || logo.alt || logoIndex}-${setIndex}-${index}`;
+            return renderLogo(logo, logoIndex, uniqueKey);
+          })}
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default LogoLoop;
