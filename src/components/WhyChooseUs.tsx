@@ -58,7 +58,7 @@ const WhyChooseUs = () => {
           {reasons.map((reason, index) => (
             <div
               key={reason.title}
-              className="group p-6 rounded-2xl bg-secondary-foreground/5 border border-secondary-foreground/10 hover:bg-secondary-foreground/10 transition-all duration-300 animate-fade-up"
+              className="group p-6 rounded-2xl bg-secondary-foreground/5 border border-secondary-foreground/10 hover:bg-secondary-foreground/5 transition-all duration-300 animate-fade-up"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="w-14 h-14 rounded-xl bg-primary/20 flex items-center justify-center mb-4 group-hover:bg-primary/30 transition-colors">

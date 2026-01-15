@@ -76,10 +76,10 @@ const Services = () => {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-primary font-semibold text-sm uppercase tracking-wider">Our Services</span>
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-3 mb-4">
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-black mt-3 mb-4">
             Corporate Food Services
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-black">
             We partner with businesses to manage their entire food service operations—from cafeteria setup to daily meals, festive celebrations, and campus events.
           </p>
         </div>
@@ -98,7 +98,6 @@ const Services = () => {
                   alt={service.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-secondary/60 to-transparent" />
                 <div className="absolute bottom-4 left-4">
                   <div className="w-12 h-12 rounded-xl bg-primary flex items-center justify-center">
                     <service.icon className="w-6 h-6 text-primary-foreground" />
