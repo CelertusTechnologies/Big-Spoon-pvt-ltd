@@ -1,63 +1,75 @@
 import LogoLoop from './LogoLoop';
+import {
+  company1,
+  company2,
+  company3,
+  company4,
+  company5,
+  company6,
+  company7,
+  company8,
+  company9,
+  company10,
+} from '@/assets/companies';
 
 const Partners = () => {
   const companyLogos = [
     {
-      src: "/src/assets/companies/company1.png",
+      src: company1,
       alt: "Company 1",
       href: "#",
       title: "Company 1"
     },
     {
-      src: "/src/assets/companies/company2.png",
+      src: company2,
       alt: "Company 2",
       href: "#",
       title: "Company 2"
     },
     {
-      src: "/src/assets/companies/company3.png",
+      src: company3,
       alt: "Company 3",
       href: "#",
       title: "Company 3"
     },
     {
-      src: "/src/assets/companies/company4.png",
+      src: company4,
       alt: "Company 4",
       href: "#",
       title: "Company 4"
     },
     {
-      src: "/src/assets/companies/company5.png",
+      src: company5,
       alt: "Company 5",
       href: "#",
       title: "Company 5"
     },
     {
-      src: "/src/assets/companies/company6.png",
+      src: company6,
       alt: "Company 6",
       href: "#",
       title: "Company 6"
     },
     {
-      src: "/src/assets/companies/company7.jpeg",
+      src: company7,
       alt: "Company 7",
       href: "#",
       title: "Company 7"
     },
     {
-      src: "/src/assets/companies/company8.png",
+      src: company8,
       alt: "Company 8",
       href: "#",
       title: "Company 8"
     },
     {
-      src: "/src/assets/companies/company9.png",
+      src: company9,
       alt: "Company 9",
       href: "#",
       title: "Company 9"
     },
     {
-      src: "/src/assets/companies/company10.png",
+      src: company10,
       alt: "Company 10",
       href: "#",
       title: "Company 10"
