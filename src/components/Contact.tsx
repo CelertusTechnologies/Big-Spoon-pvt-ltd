@@ -15,33 +15,54 @@ const Contact = () => {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
-    // Create email body with form data
-    const subject = encodeURIComponent(`Quote Request from ${formData.name} - ${formData.company}`);
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\n` +
-      `Email: ${formData.email}\n` +
-      `Company: ${formData.company}\n` +
-      `Number of Employees: ${formData.employees || 'Not specified'}\n` +
-      `Phone: ${formData.phone}\n\n` +
-      `Requirements:\n${formData.message || 'No specific requirements mentioned.'}`
-    );
-    
-    // Open email client with pre-filled information
-    const mailtoLink = `mailto:biggspoon.india@gmail.com?subject=${subject}&body=${body}`;
-    window.location.href = mailtoLink;
-    
-    toast({
-      title: "Opening Email Client",
-      description: "Your email client will open with the inquiry details.",
-    });
-    
-    // Reset form after a short delay
-    setTimeout(() => {
-      setFormData({ name: "", email: "", company: "", employees: "", phone: "", message: "" });
-    }, 1000);
+
+    try {
+      const response = await fetch(
+        "https://germanysoon.com/api/big-spoon/request-quote",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            company: formData.company,
+            employees: formData.employees,
+            phone: formData.phone,
+            message: formData.message,
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to submit quote request");
+      }
+
+      toast({
+        title: "Quote request submitted",
+        description: "Thank you! We will contact you shortly.",
+      });
+
+      setFormData({
+        name: "",
+        email: "",
+        company: "",
+        employees: "",
+        phone: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error(error);
+      toast({
+        title: "Something went wrong",
+        description:
+          "We couldn't submit your request. Please try again in a moment.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
@@ -132,7 +153,7 @@ const Contact = () => {
                     id="name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="John Doe"
+                    placeholder=""
                     required
                   />
                 </div>
@@ -145,7 +166,7 @@ const Contact = () => {
                     type="email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="john@company.com"
+                    placeholder=""
                     required
                   />
                 </div>
@@ -160,7 +181,7 @@ const Contact = () => {
                     id="company"
                     value={formData.company}
                     onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                    placeholder="Your Company"
+                    placeholder="Your Company Name"
                     required
                   />
                 </div>
@@ -185,7 +206,7 @@ const Contact = () => {
                   id="phone"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  placeholder="+91 97174 40336"
+                  placeholder=""
                   required
                 />
               </div>
