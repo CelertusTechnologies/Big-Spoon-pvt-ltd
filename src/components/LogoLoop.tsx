@@ -23,30 +23,21 @@ interface LogoLoopProps {
 
 const LogoLoop = ({
   logos,
-  speed = 100,
+  speed = 20,
   direction = 'left',
   logoHeight = 48,
   gap = 40,
-  hoverSpeed,
   scaleOnHover = false,
   fadeOut = false,
   fadeOutColor = '#ffffff',
   ariaLabel = 'Logo carousel',
 }: LogoLoopProps) => {
-  const [isHovered, setIsHovered] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const measureRef = useRef<HTMLDivElement>(null);
-  const [animationSpeed, setAnimationSpeed] = useState(speed);
+  const [animationSpeed] = useState(speed);
   const [contentSize, setContentSize] = useState(0);
 
-  useEffect(() => {
-    if (isHovered && hoverSpeed !== undefined) {
-      setAnimationSpeed(hoverSpeed);
-    } else {
-      setAnimationSpeed(speed);
-    }
-  }, [isHovered, hoverSpeed, speed]);
 
   // Measure the actual content size for seamless animation
   useEffect(() => {
@@ -85,7 +76,7 @@ const LogoLoop = ({
 
   // Duplicate logos 2 times for seamless infinite loop
   // We'll animate by exactly one set's width, so when it loops, it shows the duplicate
-  const duplicatedLogos = [...logos, ...logos];
+  const duplicatedLogos = [...logos, ...logos, ...logos];
 
   const containerStyle: React.CSSProperties = {
     position: 'relative',
@@ -113,8 +104,9 @@ const LogoLoop = ({
     display: 'flex',
     flexDirection: isHorizontal ? 'row' : 'column',
     gap: `${gap}px`,
-    width: isHorizontal ? 'fit-content' : '100%',
-    height: isVertical ? 'fit-content' : '100%',
+    width: 'fit-content',
+    willChange: 'transform',
+    transform: 'translateZ(0)',
     animation: `scroll-${direction} ${animationDuration}s linear infinite`,
   };
 
@@ -129,24 +121,22 @@ const LogoLoop = ({
   };
 
   const getKeyframes = () => {
-    // Animate by exactly one set of logos (50% of total content)
-    // This ensures seamless looping - when animation completes, 
-    // it resets to show the duplicate set which looks identical
     const translateValue = isHorizontal
-      ? `translateX(${direction === 'left' ? '-' : ''}${contentSize || 1000}px)`
-      : `translateY(${direction === 'up' ? '-' : ''}${contentSize || 1000}px)`;
+      ? `translate3d(-${contentSize}px, 0, 0)`
+      : `translate3d(0, -${contentSize}px, 0)`;
 
     return `
-      @keyframes scroll-${direction} {
-        0% {
-          transform: translate${isHorizontal ? 'X' : 'Y'}(0);
-        }
-        100% {
-          transform: ${translateValue};
-        }
+    @keyframes scroll-${direction} {
+      from {
+        transform: translate3d(0, 0, 0);
       }
-    `;
+      to {
+        transform: ${translateValue};
+      }
+    }
+  `;
   };
+
 
   // Render a single logo
   const renderLogo = (logo: Logo, logoIndex: number, uniqueKey: string) => {
@@ -160,20 +150,8 @@ const LogoLoop = ({
           height: '100%',
           width: 'auto',
           objectFit: 'contain',
-          opacity: 0.8,
-          transition: 'opacity 0.3s ease, transform 0.3s ease',
-        }}
-        onMouseEnter={(e) => {
-          if (scaleOnHover) {
-            e.currentTarget.style.transform = 'scale(1.1)';
-          }
-          e.currentTarget.style.opacity = '1';
-        }}
-        onMouseLeave={(e) => {
-          if (scaleOnHover) {
-            e.currentTarget.style.transform = 'scale(1)';
-          }
-          e.currentTarget.style.opacity = '0.8';
+          opacity: 1,
+          pointerEvents: 'auto',
         }}
       />
     ) : null;
@@ -242,8 +220,6 @@ const LogoLoop = ({
       <div
         ref={containerRef}
         style={containerStyle}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
         aria-label={ariaLabel}
       >
         <div ref={trackRef} style={trackStyle}>

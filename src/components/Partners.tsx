@@ -1,71 +1,66 @@
 import LogoLoop from './LogoLoop';
 
-/**
- * Partners Component - Displays a scrolling logo carousel of company partners
- * 
- * TO ADD YOUR COMPANY LOGOS:
- * 1. Add your logo images to: src/assets/companies/
- *    Example: company1.png, company2.png, etc.
- * 
- * 2. Import them at the top of this file:
- *    import company1 from '@/assets/companies/company1.png';
- *    import company2 from '@/assets/companies/company2.png';
- *    ... etc
- * 
- * 3. Update the companyLogos array below with your imported images and company info
- */
-
-// Import your company logos here (uncomment and add when you have logos):
-// import company1 from '@/assets/companies/company1.png';
-// import company2 from '@/assets/companies/company2.png';
-// import company3 from '@/assets/companies/company3.png';
-// import company4 from '@/assets/companies/company4.png';
-// import company5 from '@/assets/companies/company5.png';
-// import company6 from '@/assets/companies/company6.png';
-
 const Partners = () => {
-  // Update this array with your actual company logos
-  // Replace the placeholder entries with your imported images
   const companyLogos = [
-    // Example format (replace with your actual logos):
-    // { src: company1, alt: "Company Name", href: "https://company-website.com", title: "Company Name" },
-    
-    // Placeholder entries - replace these when you add your logos
-    { 
-      src: "/src/assets/companies/company1.png", 
-      alt: "Company 1", 
+    {
+      src: "/src/assets/companies/company1.png",
+      alt: "Company 1",
       href: "#",
       title: "Company 1"
     },
-    { 
-      src: "/src/assets/companies/company2.png", 
-      alt: "Company 2", 
+    {
+      src: "/src/assets/companies/company2.png",
+      alt: "Company 2",
       href: "#",
       title: "Company 2"
     },
-    { 
-      src: "/src/assets/companies/company3.png", 
-      alt: "Company 3", 
+    {
+      src: "/src/assets/companies/company3.png",
+      alt: "Company 3",
       href: "#",
       title: "Company 3"
     },
-    { 
-      src: "/src/assets/companies/company4.png", 
-      alt: "Company 4", 
+    {
+      src: "/src/assets/companies/company4.png",
+      alt: "Company 4",
       href: "#",
       title: "Company 4"
     },
-    { 
-      src: "/src/assets/companies/company5.png", 
-      alt: "Company 5", 
+    {
+      src: "/src/assets/companies/company5.png",
+      alt: "Company 5",
       href: "#",
       title: "Company 5"
     },
-    { 
-      src: "/src/assets/companies/company6.png", 
-      alt: "Company 6", 
+    {
+      src: "/src/assets/companies/company6.png",
+      alt: "Company 6",
       href: "#",
       title: "Company 6"
+    },
+    {
+      src: "/src/assets/companies/company7.jpeg",
+      alt: "Company 7",
+      href: "#",
+      title: "Company 7"
+    },
+    {
+      src: "/src/assets/companies/company8.png",
+      alt: "Company 8",
+      href: "#",
+      title: "Company 8"
+    },
+    {
+      src: "/src/assets/companies/company9.png",
+      alt: "Company 9",
+      href: "#",
+      title: "Company 9"
+    },
+    {
+      src: "/src/assets/companies/company10.png",
+      alt: "Company 10",
+      href: "#",
+      title: "Company 10"
     },
   ];
 
