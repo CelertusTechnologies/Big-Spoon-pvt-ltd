@@ -83,7 +83,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { href: "#menu", label: "Menus" },
+    
     { href: "#about", label: "About" },
     { href: "#services", label: "Services" },
     { href: "#testimonials", label: "Testimonials" },
