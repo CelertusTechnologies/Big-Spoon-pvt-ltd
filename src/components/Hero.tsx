@@ -12,27 +12,27 @@ const Hero = () => {
           alt="Overhead view of corporate buffet counter with Indian dishes"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-secondary/95 via-secondary/80 to-secondary/40" />
+        <div className="absolute inset-0 bg-black/60" />
       </div>
 
       {/* Content */}
       <div className="relative container mx-auto px-4 py-12 md:py-20">
         <div className="max-w-2xl">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-primary/20 text-primary-foreground px-4 py-2 rounded-full mb-6 animate-fade-up">
-            <Building2 className="w-4 h-4" />
-            <span className="text-sm font-medium">Trusted Corporate Cafeteria Partner in Gurugram</span>
+          <div className="inline-flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-full mb-6 animate-fade-up">
+            <Building2 className="w-4 h-4 text-white" />
+            <span className="text-sm font-medium text-white">Trusted Corporate Cafeteria Partner in Gurugram</span>
           </div>
 
           {/* Headline */}
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6 animate-fade-up" style={{ animationDelay: "0.1s" }}>
+          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 animate-fade-up" style={{ animationDelay: "0.1s" }}>
             Your Complete{" "}
             <span className="text-primary">Corporate Cafeteria</span>{" "}
             Solution
           </h1>
 
           {/* Subheadline */}
-          <p className="text-lg md:text-xl text-primary-foreground/80 mb-8 animate-fade-up" style={{ animationDelay: "0.2s" }}>
+          <p className="text-lg md:text-xl text-white/90 mb-8 animate-fade-up" style={{ animationDelay: "0.2s" }}>
             Bigg Spoon manages end-to-end cafeteria operations for businesses.
             From daily meals to snack counters, we keep your workforce well-fed and productive.
           </p>
@@ -45,9 +45,7 @@ const Hero = () => {
                 <ArrowRight className="w-5 h-5" />
               </a>
             </Button>
-            <Button variant="heroOutline" size="xl" asChild>
-              <a href="#menu">View Menu</a>
-            </Button>
+            
           </div>
 
           {/* Stats */}
@@ -55,23 +53,23 @@ const Hero = () => {
             <div className="text-center md:text-left">
               <div className="flex items-center justify-center md:justify-start gap-2 mb-1">
                 <Building2 className="w-5 h-5 text-primary" />
-                <span className="font-display text-2xl md:text-3xl font-bold text-primary-foreground">100+</span>
+                <span className="font-display text-2xl md:text-3xl font-bold text-white">100+</span>
               </div>
-              <p className="text-sm text-primary-foreground/60">Office Cafeterias</p>
+              <p className="text-sm text-white/70">Office Cafeterias</p>
             </div>
             <div className="text-center md:text-left">
               <div className="flex items-center justify-center md:justify-start gap-2 mb-1">
                 <Users className="w-5 h-5 text-primary" />
-                <span className="font-display text-2xl md:text-3xl font-bold text-primary-foreground">5000+</span>
+                <span className="font-display text-2xl md:text-3xl font-bold text-white">5000+</span>
               </div>
-              <p className="text-sm text-primary-foreground/60">Employees Served Daily</p>
+              <p className="text-sm text-white/70">Employees Served Daily</p>
             </div>
             <div className="text-center md:text-left">
               <div className="flex items-center justify-center md:justify-start gap-2 mb-1">
                 <Clock className="w-5 h-5 text-primary" />
-                <span className="font-display text-2xl md:text-3xl font-bold text-primary-foreground">10+</span>
+                <span className="font-display text-2xl md:text-3xl font-bold text-white">10+</span>
               </div>
-              <p className="text-sm text-primary-foreground/60">Years Experience</p>
+              <p className="text-sm text-white/70">Years Experience</p>
             </div>
           </div>
         </div>
@@ -79,8 +77,8 @@ const Hero = () => {
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 rounded-full border-2 border-primary-foreground/30 flex justify-center pt-2">
-          <div className="w-1 h-3 bg-primary-foreground/50 rounded-full" />
+        <div className="w-6 h-10 rounded-full border-2 border-white/30 flex justify-center pt-2">
+          <div className="w-1 h-3 bg-white/50 rounded-full" />
         </div>
       </div>
     </section>

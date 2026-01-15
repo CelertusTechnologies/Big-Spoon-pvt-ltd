@@ -43,19 +43,19 @@ const LogoComponent = () => {
   // Show text fallback only if all images fail
   if (imgError) {
     return (
-      <span className="font-display text-xl md:text-2xl font-bold text-primary-foreground whitespace-nowrap drop-shadow-lg">
+      <span className="font-display text-xl md:text-2xl font-bold text-black whitespace-nowrap drop-shadow-lg">
         Bigg Spoon
       </span>
     );
   }
 
-  // Show logo image
+  // Show logo image with text
   return (
-    <div className="relative flex items-center justify-center">
+    <div className="relative flex items-center gap-0.5">
       <img 
         src={sources[currentSrcIndex]} 
         alt="Bigg Spoon Logo" 
-        className={`h-12 md:h-14 w-auto object-contain max-w-[150px] min-h-[48px] transition-opacity duration-200 ${imgLoaded ? 'opacity-100' : 'opacity-0'}`}
+        className={`h-6 md:h-8 w-auto object-contain max-w-[64px] transition-opacity duration-200 ${imgLoaded ? 'opacity-100' : 'opacity-0'}`}
         onError={handleError}
         onLoad={handleLoad}
         style={{ 
@@ -63,13 +63,16 @@ const LogoComponent = () => {
           display: 'block',
           filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.2))',
           visibility: 'visible',
-          maxWidth: '150px',
+          maxWidth: '64px',
           height: 'auto'
         }}
       />
+      <span className="font-display text-lg md:text-xl font-bold text-primary whitespace-nowrap">
+        Bigg Spoon
+      </span>
       {!imgLoaded && !imgError && (
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-6 h-6 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin"></div>
+          <div className="w-6 h-6 border-2 border-black/30 border-t-black rounded-full animate-spin"></div>
         </div>
       )}
     </div>
@@ -80,7 +83,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { href: "#menu", label: "Menus" },
+    
     { href: "#about", label: "About" },
     { href: "#services", label: "Services" },
     { href: "#testimonials", label: "Testimonials" },
@@ -88,29 +91,29 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent pt-4">
+    <nav className="fixed top-6 left-0 right-0 z-50 bg-transparent pt-2">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-11">
           {/* Mobile Logo */}
           <a
             href="#"
-            className="md:hidden flex items-center min-w-[120px]"
+            className="md:hidden flex items-center min-w-[100px]"
           >
             <LogoComponent />
           </a>
 
           {/* Desktop Navigation Pill */}
-          <div className="hidden md:flex items-center gap-8 px-10 py-2.5 rounded-full shadow-elevated bg-secondary/90 text-secondary-foreground border border-white/10 mx-auto animate-fade-in">
-            <a href="#" className="flex items-center min-w-[120px] justify-center">
+          <div className="hidden md:flex items-center gap-6 px-6 py-2.5 rounded-full shadow-elevated bg-secondary/90 text-secondary-foreground border border-white/10 mx-auto animate-fade-in">
+            <a href="#" className="flex items-center min-w-[100px] justify-center">
               <LogoComponent />
             </a>
             <div className="w-px h-6 bg-secondary-foreground/20" />
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-4">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-secondary-foreground/80 hover:text-primary-foreground transition-colors font-semibold tracking-wide"
+                  className="text-secondary-foreground/80 hover:text-black transition-colors font-semibold tracking-wide"
                 >
                   {link.label}
                 </a>
@@ -136,7 +139,7 @@ const Navbar = () => {
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-secondary-foreground/80 hover:text-primary-foreground transition-colors font-semibold py-2"
+                  className="text-secondary-foreground/80 hover:text-black transition-colors font-semibold py-2"
                   onClick={() => setIsOpen(false)}
                 >
                   {link.label}
