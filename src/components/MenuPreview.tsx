@@ -27,10 +27,10 @@ const MenuPreview = () => {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-primary font-semibold text-sm uppercase tracking-wider">Our Menu</span>
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-3 mb-4">
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-black mt-3 mb-4">
             A Taste of What We Offer
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-black">
             Our diverse menu features cuisines from across India, prepared fresh daily. Menus can be customized for your team.
           </p>
         </div>
