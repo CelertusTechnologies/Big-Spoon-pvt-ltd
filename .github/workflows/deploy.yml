@@ -8,6 +8,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
 
     steps:
       - name: Checkout code
@@ -30,8 +31,12 @@ jobs:
           host: ${{ secrets.VPS_IP }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
+          port: 22
+          timeout: 60s
+          command_timeout: 2m
           script: |
             rm -rf /var/www/Big-Spoon-pvt-ltd/dist
+            echo "Dist folder cleaned successfully"
 
       - name: Deploy dist folder to VPS
         uses: appleboy/scp-action@v0.1.7
@@ -39,6 +44,8 @@ jobs:
           host: ${{ secrets.VPS_IP }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
+          port: 22
+          timeout: 60s
           source: "dist"
           target: "/var/www/Big-Spoon-pvt-ltd"
 
@@ -48,5 +55,9 @@ jobs:
           host: ${{ secrets.VPS_IP }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
+          port: 22
+          timeout: 60s
+          command_timeout: 2m
           script: |
             sudo systemctl reload nginx
+            echo "Nginx reloaded successfully"
