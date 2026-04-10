@@ -10,6 +10,7 @@ import {
   company8,
   company9,
   company10,
+  company11,
 } from '@/assets/companies';
 
 const Partners = () => {
@@ -73,6 +74,11 @@ const Partners = () => {
       alt: "Company 10",
       href: "#",
       title: "Company 10"
+    },
+    {
+      node: <img src={company11} alt="Company 11" style={{ height: '100px', width: 'auto', objectFit: 'contain' }} />,
+      href: "#",
+      title: "Company 11"
     },
   ];
 
