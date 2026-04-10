@@ -82,7 +82,7 @@ const WhyChooseUs = () => {
               <p className="text-secondary-foreground/70">Office Cafeterias</p>
             </div>
             <div className="text-center">
-              <div className="font-display text-4xl md:text-5xl font-bold text-primary mb-2">5000+</div>
+              <div className="font-display text-4xl md:text-5xl font-bold text-primary mb-2">2500+</div>
               <p className="text-secondary-foreground/70">Employees Fed Daily</p>
             </div>
             <div className="text-center">

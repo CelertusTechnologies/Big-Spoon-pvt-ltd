@@ -9,6 +9,7 @@ import company7 from './company7.jpeg';
 import company8 from './company8.png';
 import company9 from './company9.png';
 import company10 from './company10.png';
+import company11 from './company11.png';
 
 export const companyLogos = [
   company1,
@@ -21,6 +22,7 @@ export const companyLogos = [
   company8,
   company9,
   company10,
+  company11,
 ];
 
 export {
@@ -34,4 +36,5 @@ export {
   company8,
   company9,
   company10,
+  company11,
 };
