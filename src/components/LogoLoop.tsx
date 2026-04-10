@@ -45,29 +45,40 @@ const LogoLoop = ({
       if (measureRef.current) {
         const isHorizontal = direction === 'left' || direction === 'right';
         const size = isHorizontal
-          ? measureRef.current.offsetWidth
-          : measureRef.current.offsetHeight;
+          ? measureRef.current.scrollWidth
+          : measureRef.current.scrollHeight;
         if (size > 0) {
           setContentSize(size);
         }
       }
     };
 
-    // Measure after content is rendered
-    const timeout = setTimeout(measureContent, 100);
+    // Measure after content is rendered — use longer delay for mobile image loads
+    const timeout = setTimeout(measureContent, 300);
+    const timeout2 = setTimeout(measureContent, 1000);
     const observer = new ResizeObserver(measureContent);
 
     if (measureRef.current) {
       observer.observe(measureRef.current);
+      // Re-measure when images finish loading
+      const imgs = measureRef.current.querySelectorAll('img');
+      imgs.forEach((img) => {
+        if (!img.complete) {
+          img.addEventListener('load', measureContent);
+        }
+      });
     }
 
-    // Also measure on window resize
+    // Also measure on window resize and orientation change
     window.addEventListener('resize', measureContent);
+    window.addEventListener('orientationchange', measureContent);
 
     return () => {
       clearTimeout(timeout);
+      clearTimeout(timeout2);
       observer.disconnect();
       window.removeEventListener('resize', measureContent);
+      window.removeEventListener('orientationchange', measureContent);
     };
   }, [logos, direction, logoHeight, gap]);
 
@@ -179,20 +190,22 @@ const LogoLoop = ({
   };
 
   return (
-    <>
+    <div style={{ position: 'relative' }}>
       <style>{getKeyframes()}</style>
       {/* Hidden measurement container - renders first set to measure width */}
       <div
         ref={measureRef}
         style={{
           position: 'absolute',
+          top: 0,
+          left: 0,
           visibility: 'hidden',
+          pointerEvents: 'none',
           height: isHorizontal ? `${logoHeight}px` : 'auto',
           width: isHorizontal ? 'auto' : `${logoHeight}px`,
           display: 'flex',
           flexDirection: isHorizontal ? 'row' : 'column',
           gap: `${gap}px`,
-          pointerEvents: 'none',
         }}
       >
         {logos.map((logo, idx) => {
@@ -231,7 +244,7 @@ const LogoLoop = ({
           })}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
