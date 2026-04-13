@@ -69,69 +69,85 @@ const features = [
   },
 ];
 
+import { motion } from "framer-motion";
+
 const Services = () => {
   return (
-    <section id="services" className="py-20 md:py-32 bg-muted/30 animate-section">
-      <div className="container mx-auto px-4">
+    <section id="services" className="py-20 md:py-32 bg-secondary/30 relative overflow-hidden">
+      <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider">Our Services</span>
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-black mt-3 mb-4">
+        <motion.div 
+          className="text-center max-w-3xl mx-auto mb-20"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+        >
+          <span className="text-primary font-bold text-sm uppercase tracking-[0.2em]">Our Services</span>
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground mt-4 mb-6 leading-tight">
             Corporate Food Services
           </h2>
-          <p className="text-lg text-black">
+          <p className="text-lg md:text-xl text-muted-foreground font-light px-4">
             We partner with businesses to manage their entire food service operations—from cafeteria setup to daily meals, festive celebrations, and campus events.
           </p>
-        </div>
+        </motion.div>
 
         {/* Service Cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-20">
           {services.map((service, index) => (
-            <div
+            <motion.div
               key={service.title}
-              className="group bg-card rounded-2xl overflow-hidden shadow-soft hover-lift animate-fade-up"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ y: -10, transition: { duration: 0.2 } }}
+              className="group bg-card rounded-3xl overflow-hidden shadow-soft border border-border hover:shadow-elevated transition-all"
             >
-              <div className="relative h-56 overflow-hidden">
-                <img
+              <div className="relative h-64 overflow-hidden">
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10" />
+                <motion.img
                   src={service.image}
                   alt={service.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute bottom-4 left-4">
-                  <div className="w-12 h-12 rounded-xl bg-primary flex items-center justify-center">
-                    <service.icon className="w-6 h-6 text-primary-foreground" />
+                <div className="absolute bottom-5 left-5 z-20">
+                  <div className="w-14 h-14 rounded-2xl bg-white/90 backdrop-blur-md flex items-center justify-center shadow-lg group-hover:bg-primary transition-colors duration-300">
+                    <service.icon className="w-7 h-7 text-primary group-hover:text-white transition-colors duration-300" />
                   </div>
                 </div>
               </div>
-              <div className="p-6">
-                <h3 className="font-display text-xl font-bold text-foreground mb-2">
+              <div className="p-8">
+                <h3 className="font-display text-2xl font-bold text-foreground mb-3 leading-snug">
                   {service.title}
                 </h3>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground leading-relaxed">
                   {service.description}
                 </p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* Features Grid */}
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <div
+            <motion.div
               key={feature.title}
-              className="flex items-start gap-4 p-6 bg-card rounded-xl border border-border animate-fade-up"
-              style={{ animationDelay: `${(index + 3) * 0.1}s` }}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+              className="flex items-start gap-5 p-8 bg-white/50 backdrop-blur-sm rounded-3xl border border-border/50 hover:bg-white hover:shadow-soft transition-all"
             >
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <feature.icon className="w-5 h-5 text-primary" />
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/10 flex items-center justify-center flex-shrink-0">
+                <feature.icon className="w-7 h-7 text-primary" />
               </div>
               <div>
-                <h4 className="font-semibold text-foreground mb-1">{feature.title}</h4>
-                <p className="text-sm text-muted-foreground">{feature.description}</p>
+                <h4 className="font-display text-xl font-bold text-foreground mb-2">{feature.title}</h4>
+                <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
